@@ -3,6 +3,8 @@ body, html {
   height: 100%;
 }
 
-.active {
-  color: pink;
+#create-post-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 }
