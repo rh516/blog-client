@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom';
 import CreatePost from './create';
 import Posts from './posts';
+import Post from './post';
 
 // const Posts = (props) => {
 //   return (
@@ -43,7 +44,7 @@ const App = (props) => {
         <Switch>
           <Route exact path="/" component={Posts} />
           <Route path="/posts/new" component={CreatePost} />
-          <Route exact path="/posts/:postID" />
+          <Route exact path="/posts/:postID" component={Post} />
           <Route component={FallBack} />
         </Switch>
       </div>
