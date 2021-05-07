@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TextareaAutosize from 'react-textarea-autosize';
 import withRouter from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import { fetchPost, deletePost, updatePost } from '../actions';
 
 class Post extends Component {
@@ -41,6 +42,8 @@ class Post extends Component {
     return (
       <div className="post-container">
         <h2>{this.props.current.title}</h2>
+        <h5>{this.props.current.tags}</h5>
+        <ReactMarkdown>{this.props.current.coverURL || ''}</ReactMarkdown>
       </div>
     );
   }

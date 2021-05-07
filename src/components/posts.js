@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// import ReactMarkdown from 'react-markdown';
 import { fetchPosts } from '../actions/index';
 
 class Posts extends Component {
@@ -10,7 +11,12 @@ class Posts extends Component {
   renderPosts = () => {
     const posts = this.props.posts.map((post) => {
       return (
-        <h2>{post.title}</h2>
+        <div>
+          <h2>{post.title}</h2>
+          <h4>{post.tags}</h4>
+          <img className="image" src={post.coverUrl} alt="cover" />
+        </div>
+
       );
     });
 
