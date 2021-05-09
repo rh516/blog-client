@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import TextareaAutosize from 'react-textarea-autosize';
 import { withRouter } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import Button from '@material-ui/core/Button';
 import { fetchPost, deletePost, updatePost } from '../actions';
 
 class Post extends Component {
@@ -63,31 +63,31 @@ class Post extends Component {
     if (this.state.isEditing) {
       return (
         <div className="edit-post-container">
-          <TextareaAutosize
+          <textarea
             id="title-container"
             placeholder="Title"
             value={this.state.title}
             onChange={this.handleTitleChange}
           />
-          <TextareaAutosize
+          <textarea
             id="tags-container"
             placeholder="Tags"
             value={this.state.tags}
             onChange={this.handleTagsChange}
           />
-          <TextareaAutosize
+          <textarea
             id="content-container"
             placeholder="Content"
             value={this.state.content}
             onChange={this.handleContentChange}
           />
-          <TextareaAutosize
+          <textarea
             id="cover-url-container"
             placeholder="Cover URL"
             value={this.state.coverURL}
             onChange={this.handleCoverURLChange}
           />
-          <button type="button" onClick={this.handleEditSubmit}>Submit</button>
+          <Button type="button" onClick={this.handleEditSubmit}>Submit</Button>
         </div>
       );
     } else {
@@ -96,7 +96,11 @@ class Post extends Component {
           <h2>{this.props.current.title}</h2>
           <h5>{this.props.current.tags}</h5>
           <ReactMarkdown>{this.props.current.content || ''}</ReactMarkdown>
-          <img className="image" src={this.props.current.coverUrl} alt="cover" />
+          {this.props.current.coverUrl ? <img src={this.props.current.coverUrl} alt="cover" /> : null}
+          <div className="post-buttons-container">
+            <Button onClick={this.handleEditClick}>Edit</Button>
+            <Button onClick={this.handleDelete}>Delete</Button>
+          </div>
         </div>
       );
     }
@@ -106,8 +110,6 @@ class Post extends Component {
     return (
       <div className="post-container">
         {this.renderSomeSection()}
-        <button type="button" onClick={this.handleEditClick}>Edit</button>
-        <button type="button" onClick={this.handleDelete}>Delete</button>
       </div>
     );
   }

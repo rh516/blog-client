@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import TextareaAutosize from 'react-textarea-autosize';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
 import { createPost } from '../actions';
 
 class CreatePost extends Component {
@@ -32,49 +32,41 @@ class CreatePost extends Component {
   }
 
   handleSubmit = (event) => {
-    this.props.createPost(this.state, this.props.history);
-
-    this.setState({
-      title: '',
-      tags: '',
-      content: '',
-      coverURL: '',
-    });
+    if (this.state.title && this.state.tags && this.state.content) {
+      this.props.createPost(this.state, this.props.history);
+    }
   }
 
   render() {
     return (
       <div id="create-post-container">
-        <TextareaAutosize
+        <textarea
           id="title-container"
           placeholder="Title"
           value={this.state.title}
           onChange={this.handleTitleChange}
         />
-        <TextareaAutosize
+        <textarea
           id="tags-container"
           placeholder="Tags"
           value={this.state.tags}
           onChange={this.handleTagsChange}
         />
-        <TextareaAutosize
+        <textarea
           id="content-container"
           placeholder="Content"
           value={this.state.content}
           onChange={this.handleContentChange}
         />
-        <TextareaAutosize
+        <textarea
           id="cover-url-container"
           placeholder="Cover URL"
           value={this.state.coverURL}
           onChange={this.handleCoverURLChange}
         />
-        <input
-          id="submit-button"
-          type="submit"
-          value="Create"
-          onClick={this.handleSubmit}
-        />
+        <Button onClick={this.handleSubmit}>
+          Create
+        </Button>
       </div>
     );
   }
