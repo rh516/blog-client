@@ -66,25 +66,25 @@ class Post extends Component {
           <textarea
             id="title-container"
             placeholder="Title"
-            value={this.state.title}
+            defaultValue={this.props.current.title}
             onChange={this.handleTitleChange}
           />
           <textarea
             id="tags-container"
             placeholder="Tags"
-            value={this.state.tags}
+            defaultValue={this.props.current.tags}
             onChange={this.handleTagsChange}
           />
           <textarea
             id="content-container"
             placeholder="Content"
-            value={this.state.content}
+            defaultValue={this.props.current.content}
             onChange={this.handleContentChange}
           />
           <textarea
             id="cover-url-container"
             placeholder="Cover URL"
-            value={this.state.coverURL}
+            defaultValue={this.props.current.coverUrl}
             onChange={this.handleCoverURLChange}
           />
           <Button type="button" onClick={this.handleEditSubmit}>Submit</Button>
