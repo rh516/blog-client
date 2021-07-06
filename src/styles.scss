@@ -1,0 +1,94 @@
+body, html {
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+}
+
+#main {
+  margin-top: 7em;
+}
+ 
+#create-post-container {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: auto;
+
+  textarea {
+    margin-bottom: 1.5em;
+  }
+  #content-container {
+    height: 100px
+  }
+}
+
+#toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+#posts-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.test{
+  display: flex;
+  align-items: center;
+}
+
+.navbar-icon {
+  color: white;
+}
+
+.post-item-container {
+  border: 1px black solid;
+  min-width: 300px;
+  max-width: 400px;
+  margin: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: capitalize;
+  img {
+    width: 100%;
+  }
+}
+
+.post-container {
+  width: 50%;
+  margin: auto;
+  .post-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .edit-post-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    textarea {
+      width: 80%;
+      margin-bottom: 1.5em;
+    }
+
+    #content-container {
+      height: 100px;
+    }
+  }
+
+  .post-buttons-container {
+    margin-top: 5em;
+  }
+
+  h2, h5 {
+    text-transform: capitalize;
+  }
+  img {
+    margin-top: 2em;
+    max-width: 500px;
+  }
+}
