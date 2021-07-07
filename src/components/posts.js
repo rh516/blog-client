@@ -11,13 +11,12 @@ class Posts extends Component {
   renderPosts = () => {
     const posts = this.props.posts.map((post) => {
       return (
-        <div className="post-item-container">
-          {post.coverUrl ? <img src={post.coverUrl} alt="cover" /> : null}
-          <NavLink to={`posts/${post.id}`}>
+        <NavLink to={`posts/${post.id}`}>
+          <div className="post-item-container">
+            {post.coverUrl ? <img src={post.coverUrl} alt="cover" /> : null}
             <h2>{post.title}</h2>
-          </NavLink>
-        </div>
-
+          </div>
+        </NavLink>
       );
     });
 
@@ -26,8 +25,11 @@ class Posts extends Component {
 
   render() {
     return (
-      <div id="posts-container">
-        {this.renderPosts()}
+      <div id="home-container">
+        <h1>Welcome to My Super Awesome Blog!!</h1>
+        <div id="posts-container">
+          {this.renderPosts()}
+        </div>
       </div>
     );
   }

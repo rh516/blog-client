@@ -78,7 +78,9 @@ class Post extends Component {
       return (
         <div className="post-content-container">
           <h2>{this.props.current.title}</h2>
-          <ReactMarkdown>{this.props.current.content || ''}</ReactMarkdown>
+          <div className="post-markdown-container">
+            <ReactMarkdown>{this.props.current.content || ''}</ReactMarkdown>
+          </div>
           {this.props.current.coverUrl ? <img src={this.props.current.coverUrl} alt="cover" /> : null}
           <div className="post-buttons-container">
             <Button onClick={this.handleEditClick}>Edit</Button>

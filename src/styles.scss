@@ -1,3 +1,8 @@
+@font-face {
+  font-family: EncodeSansSCReg;
+  src: url('./fonts/EncodeSansSC-Regular.ttf');
+}
+
 body, html {
   font-family: "Roboto", sans-serif;
   height: 100%;
@@ -26,12 +31,26 @@ body, html {
   justify-content: space-between;
 }
 
+#home-container {
+  h1 {
+    margin-bottom: 2em;
+    font-family: EncodeSansSCReg;
+  }
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
 #posts-container {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-wrap: wrap;
-  margin: auto
+  margin: auto;
+  a {
+    text-decoration: none;
+    color: black;
+  }
 }
 
 .navbar-icon {
@@ -39,7 +58,9 @@ body, html {
 }
 
 .post-item-container {
-  border: 1px black solid;
+  background-color: #fafafa;
+  box-shadow: 0 0 15px #043db8;
+  border-radius: 1em;
   min-height: 100px;
   min-width: 300px;
   max-width: 400px;
@@ -50,11 +71,12 @@ body, html {
   text-transform: capitalize;
   img {
     width: 100%;
+    border-radius: 1em;
   }
 }
 
 .post-container {
-  width: 50%;
+  width: 60%;
   margin: auto;
   .post-content-container {
     display: flex;
@@ -79,6 +101,9 @@ body, html {
 
   .post-buttons-container {
     margin-top: 5em;
+    button {
+      margin: auto 1.5em;
+    }
   }
 
   h2, h5 {
