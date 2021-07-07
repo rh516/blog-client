@@ -16,7 +16,6 @@ class Posts extends Component {
           <NavLink to={`posts/${post.id}`}>
             <h2>{post.title}</h2>
           </NavLink>
-          <h4>{post.tags}</h4>
         </div>
 
       );

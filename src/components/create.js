@@ -9,31 +9,22 @@ class CreatePost extends Component {
 
     this.state = {
       title: '',
-      tags: '',
       content: '',
-      coverURL: '',
+      coverUrl: '',
     };
   }
 
-  handleTitleChange = (event) => {
-    this.setState({ title: event.target.value });
-  }
-
-  handleTagsChange = (event) => {
-    this.setState({ tags: event.target.value });
-  }
-
-  handleContentChange = (event) => {
-    this.setState({ content: event.target.value });
-  }
-
-  handleCoverURLChange = (event) => {
-    this.setState({ coverURL: event.target.value });
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   }
 
   handleSubmit = (event) => {
-    if (this.state.title && this.state.tags && this.state.content) {
+    if (this.state.title && this.state.content) {
       this.props.createPost(this.state, this.props.history);
+    } else {
+      // eslint-disable-next-line no-alert
+      alert('Post must have a title and content.');
     }
   }
 
@@ -42,27 +33,24 @@ class CreatePost extends Component {
       <div id="create-post-container">
         <textarea
           id="title-container"
+          name="title"
           placeholder="Title"
-          value={this.state.title}
-          onChange={this.handleTitleChange}
-        />
-        <textarea
-          id="tags-container"
-          placeholder="Tags"
-          value={this.state.tags}
-          onChange={this.handleTagsChange}
+          defaultValue={this.state.title}
+          onChange={this.handleChange}
         />
         <textarea
           id="content-container"
+          name="content"
           placeholder="Content"
-          value={this.state.content}
-          onChange={this.handleContentChange}
+          defaultValue={this.state.content}
+          onChange={this.handleChange}
         />
         <textarea
           id="cover-url-container"
+          name="coverUrl"
           placeholder="Cover URL"
-          value={this.state.coverURL}
-          onChange={this.handleCoverURLChange}
+          defaultValue={this.state.coverURL}
+          onChange={this.handleChange}
         />
         <Button onClick={this.handleSubmit}>
           Create

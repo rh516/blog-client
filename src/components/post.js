@@ -12,9 +12,8 @@ class Post extends Component {
     this.state = {
       isEditing: false,
       title: props.current.title,
-      tags: props.current.tags,
       content: props.current.content,
-      coverURL: props.current.coverURL,
+      coverURL: props.current.coverUrl,
     };
   }
 
@@ -22,20 +21,9 @@ class Post extends Component {
     this.props.fetchPost(this.props.match.params.postID);
   }
 
-  handleTitleChange = (event) => {
-    this.setState({ title: event.target.value });
-  }
-
-  handleTagsChange = (event) => {
-    this.setState({ tags: event.target.value });
-  }
-
-  handleContentChange = (event) => {
-    this.setState({ content: event.target.value });
-  }
-
-  handleCoverURLChange = (event) => {
-    this.setState({ coverURL: event.target.value });
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   }
 
   handleEditClick = () => {
@@ -47,7 +35,6 @@ class Post extends Component {
 
     const fields = {
       title: this.state.title,
-      tags: this.state.tags,
       content: this.state.content,
       coverUrl: this.state.coverURL,
     };
@@ -65,27 +52,24 @@ class Post extends Component {
         <div className="edit-post-container">
           <textarea
             id="title-container"
+            name="title"
             placeholder="Title"
             defaultValue={this.props.current.title}
-            onChange={this.handleTitleChange}
-          />
-          <textarea
-            id="tags-container"
-            placeholder="Tags"
-            defaultValue={this.props.current.tags}
-            onChange={this.handleTagsChange}
+            onChange={this.handleChange}
           />
           <textarea
             id="content-container"
+            name="content"
             placeholder="Content"
             defaultValue={this.props.current.content}
-            onChange={this.handleContentChange}
+            onChange={this.handleChange}
           />
           <textarea
             id="cover-url-container"
+            name="coverURL"
             placeholder="Cover URL"
             defaultValue={this.props.current.coverUrl}
-            onChange={this.handleCoverURLChange}
+            onChange={this.handleChange}
           />
           <Button type="button" onClick={this.handleEditSubmit}>Submit</Button>
         </div>
@@ -94,7 +78,6 @@ class Post extends Component {
       return (
         <div className="post-content-container">
           <h2>{this.props.current.title}</h2>
-          <h5>{this.props.current.tags}</h5>
           <ReactMarkdown>{this.props.current.content || ''}</ReactMarkdown>
           {this.props.current.coverUrl ? <img src={this.props.current.coverUrl} alt="cover" /> : null}
           <div className="post-buttons-container">
